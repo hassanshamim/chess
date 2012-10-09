@@ -1,0 +1,34 @@
+As my mom, in order to be easy to use, I want to make the instructions clear.
+  - Lot's of whitespace in the display board
+  - Glossary of pieces and their labels
+  - Instructions in the beginning on commands and included rules
+  - Links to more information
+
+
+As a chess newbie, in order to be fun, I want to have the rules of chess be accessible.
+  - Links to wiki articles
+  - Polite warning when making illegal moves or commands
+  - Glossary of pieces
+
+As a non-native English speaker, in order to be easy to use, I want to provide resources and use minimal english 
+  - Have a link to pictures of the pieces ( and translations )
+  - Have simple Yes / No prompts
+
+As another Githubber, in order to be played from the console, I want to have directions.
+  - Directions on how to run, pause, and end the  game from the console
+
+As me, in order to play a game of chess, I want to implement rules and warnings
+  - When a piece can and can't jump another
+  - No moving into check
+  - No illegal moves
+
+As a friend, in order to play with a friend, I want the game to be 2-player
+  - Prompt users for names
+  - Include current turn in Board Display
+  - Switch player turns every round
+
+
+
+Matt's super harh notes:
+  Some redundancy
+  Break down into smaller ones
