@@ -41,4 +41,52 @@ class GamePieceTest < Test::Unit::TestCase
     assert_equal 4, original_file
     assert_equal 7, new_file
   end
+
+  def test_03b_game_piece_rank_can_be_changed
+    p = GamePiece.new( :black, 4, 0 )
+
+    original_rank = p.rank
+    p.rank = 5
+    new_rank = p.rank
+
+    assert_equal 0, original_rank
+    assert_equal 5, new_rank
+  end
+
+  def test_04_position_return_rank_and_file
+
+    p = GamePiece.new( :white, 2, 5 )
+    position1 = p.position
+
+    p.rank = 3
+    p.file = 3
+    position2 = p.position
+
+    assert_equal [2,5], position1
+    assert_equal [3,3], position2
+
+  end
+
+ def test_05a_game_piece_is_active_when_created
+    p = GamePiece.new( :white, 2, 5 )
+
+    assert  p.active?
+  end
+ 
+  def test_05b_after_kill_active_returns_false
+    p = GamePiece.new( :white, 2, 5 )
+    p.kill
+ 
+    assert_equal false, p.active?
+  end
+
+  def test_05c_after_kill_rank_and_file_are_nil
+    p = GamePiece.new( :white, 2, 5 )
+
+    p.kill
+    assert_equal nil, p.file
+    assert_equal nil, p.rank
+    assert_equal [nil, nil], p.position
+  end
+
 end
