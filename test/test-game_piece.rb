@@ -75,8 +75,11 @@ class GamePieceTest < Test::Unit::TestCase
  
   def test_05b_after_kill_active_returns_false
     p = GamePiece.new( :white, 2, 5 )
+    r = GamePiece.new( :white, 2, 5 )
     p.kill
- 
+    r.seppuku
+    
+    assert_equal false, p.active?
     assert_equal false, p.active?
   end
 
@@ -89,4 +92,17 @@ class GamePieceTest < Test::Unit::TestCase
     assert_equal [nil, nil], p.position
   end
 
+  def test_06a_color_intial_returns_a_string
+    p = GamePiece.new( :white, 2, 5 )
+    ci = p.color_initial
+    assert ci.is_a? String
+  end
+
+  def test_06b_color_initial_returns_first_letter
+    w = GamePiece.new( :white, 2, 5 )
+    b = GamePiece.new( :black, 2, 5 )
+
+    assert_equal 'W', w.color_initial
+    assert_equal 'B', b.color_initial
+  end
 end
