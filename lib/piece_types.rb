@@ -11,6 +11,8 @@ class Pawn < GamePiece
     'P'
   end
 
+
+
   def initials
     color_initial + piece_initial
   end
@@ -21,9 +23,24 @@ class Pawn < GamePiece
     else
       new_rank = rank - 1
     end
-    [ [file - 1, new_rank, ], [file, new_rank], [file + 1, new_rank] ]
+    [ [file - 1, new_rank], [file, new_rank], [file + 1, new_rank] ]
   end
 
+  def valid_attack_coords
+    new_rank = ( color == :white ? rank + 1 : rank - 1 )
+    coords = [ [file-1, new_rank], [file+1, new_rank] ]
+    coords.select do |file, rank|
+      (0..7).include?(file) and (0..7).include?(rank)
+    end   
+  end
+
+  def valid_move_coords
+    new_rank = ( color == :white ? rank + 1 : rank - 1 )   
+    coords = [[file, new_rank]]
+    coords.select do |file, rank|
+      (0..7).include?(file) and (0..7).include?(rank)
+    end   
+  end
 
 end
 
