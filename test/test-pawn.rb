@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'piece_types.rb'
+require 'pawn.rb'
 
 class PieceTypeTest < Test::Unit::TestCase
 
@@ -34,34 +34,6 @@ class PieceTypeTest < Test::Unit::TestCase
 
     assert_equal "BP", b
     assert_equal "WP", w
-  end
-  
-  def test_4a_PAWN_valid_coords_produces_array_of_coords
-    p = Pawn.new( :white, 2, 1 )
-    coords = p.valid_coords
-    first_coord = coords.first
-    assert coords.is_a? Array
-    assert first_coord.size == 2 and first_coord.is_a? Array
-
-  end
-
-  def test_4b_PAWN_valid_coords_produces_possible_move_coordinates_WHITE
-    w = Pawn.new( :white, 2, 1 )
-    coords = w.valid_coords  #order unimportant
-
-    assert_equal true, coords.include?([1, 2])
-    assert coords.include?([2, 2])
-    assert coords.include?([3, 2])
-  end
-
-  def test_4c_PAWN_valid_coords_produces_possible_move_coordinates_BLACK
-    b = Pawn.new( :black, 3, 3 )
-    coords = b.valid_coords
-
-    assert coords.include?([2, 2])
-    assert coords.include?([3, 2])
-    assert coords.include?([4, 2])
-
   end
 
   def test_5a_valid_attack_coords_black_regular
@@ -114,5 +86,11 @@ class PieceTypeTest < Test::Unit::TestCase
 
     assert_equal false, coords1.include?([3, 8])
     assert_equal false, coords2.include?([3, -1])
+  end
+
+  def test_7_path_to_returns_empty_2d_array
+    a = Pawn.new( :white, 3, 3 )
+
+    assert_equal [[]], a.path_to([4,4])
   end
 end
