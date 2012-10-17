@@ -3,11 +3,13 @@ class GamePiece
   attr_reader :color
   attr_accessor :rank, :file
 
+  @@all_pieces = Array.new
+
   def initialize ( color, file, rank )
     @color, @rank, @file = color, rank, file
     @alive = true
+    @@all_pieces << self  #MOVE THIS SOMEWHERE ELSE
   end
-
 
   def position
     [ file, rank ]
@@ -28,4 +30,13 @@ class GamePiece
     color.to_s[ 0, 1].upcase
   end
 
+  def initials
+    color_initial + piece_initial   #template method, piece_initial defined in subclasses
+  end
+
+##BELOW THIS IS UNTESTED CODE
+  def attack(file, rank)
+
+    change_coords(file, rank)
+  end
 end
