@@ -105,12 +105,4 @@ class GamePieceTest < Test::Unit::TestCase
     assert_equal 'B', b.color_initial
   end
 
-  def test_07_new_pieces_get_added_to_all_pieces
-    w = GamePiece.new( :white, 2, 5 )
-    b = GamePiece.new( :black, 2, 5 )
-    last = GamePiece.new( :white, 1, 1)
-    result = GamePiece.class_variable_get(:@@all_pieces).size
-
-    assert_equal 18, result
-  end
 end

@@ -8,7 +8,7 @@ class GamePiece
   def initialize ( color, file, rank )
     @color, @rank, @file = color, rank, file
     @alive = true
-    @@all_pieces << self  #MOVE THIS SOMEWHERE ELSE
+   # @@all_pieces << self  #MOVE THIS SOMEWHERE ELSE
   end
 
   def position
