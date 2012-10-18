@@ -34,9 +34,4 @@ class GamePiece
     color_initial + piece_initial   #template method, piece_initial defined in subclasses
   end
 
-##BELOW THIS IS UNTESTED CODE
-  def attack(file, rank)
-
-    change_coords(file, rank)
-  end
 end
