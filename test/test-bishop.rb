@@ -97,13 +97,12 @@ class BishopTest < Test::Unit::TestCase
     assert_equal expected, result
   end
 
-  def test_7c_path_to_return_empty_2d_array_if_adjacent
+  def test_7d_path_to_return_empty_2d_array_if_adjacent
     bishop = Bishop.new( :white, 3, 3 )
     destination = [ 2, 4 ]
     path = bishop.path_to( destination )
 
     assert_equal [ [] ], path
-
   end
 
 end
