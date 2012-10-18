@@ -55,7 +55,7 @@ class KnightTest < Test::Unit::TestCase
     knight = Knight.new( :black, 2, 2)
     coords = knight.valid_move_coords
 
-    assert_equal false, coords.include?(r.position)
+    assert_equal false, coords.include?(knight.position)
   end
 
   def test_5d_valid_move_coords_doesnt_go_off_board
