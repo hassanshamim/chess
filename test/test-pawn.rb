@@ -1,7 +1,7 @@
 require 'test/unit'
 require 'pawn.rb'
 
-class PieceTypeTest < Test::Unit::TestCase
+class PawnTest < Test::Unit::TestCase
 
   def test_01_pawn_inherits_gamepiece_initializiation
     p = Pawn.new( :black, 2, 1 )
