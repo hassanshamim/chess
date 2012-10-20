@@ -13,7 +13,7 @@ class Queen < GamePiece
     number_of_squares = ( target_file - file).abs
     rank_slope = target_rank  <=> rank
     file_slope = target_file <=> file
-
+  
     (1..number_of_squares).each do | i |
       path_array << [ file + i*file_slope , rank + i*rank_slope ]
     end

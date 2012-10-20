@@ -22,8 +22,8 @@ class QueenTest < Test::Unit::TestCase
 
   def test_02b_Queen_initial_is_Q
     queen = Queen.new( :black, 2, 1 )   
-
     queen_initial = queen.piece_initial
+
     assert_equal 'Q', queen_initial
   end
 
