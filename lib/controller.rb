@@ -58,7 +58,7 @@ class Controller
   end
 
   def get_move_type(start, destination)
-    if piece_at( start ).color == @turn_color and piece_at( destination ) != @turn_color
+    if piece_at( start ).color == @turn_color and piece_at( destination ).color != @turn_color
       if all_positions.include?( start )
         move_type =  all_positions.include?(destination) ? 'attack' : 'move' 
         attempt_move( start, destination, move_type )
