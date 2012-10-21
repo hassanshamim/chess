@@ -1,4 +1,4 @@
-require 'game_piece.rb'
+require './game_piece.rb'
 
 class Queen < GamePiece
 
