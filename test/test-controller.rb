@@ -78,4 +78,55 @@ class ControllerTest < Test::Unit::TestCase
       1000.times{controller.change_turn}
     end
   end
+
+  def test_05a_all_pieces_is_an_array
+    controller = Controller.new("Magnus", "DeepBlue")
+    all_pieces = controller.instance_variable_get(:@all_pieces)
+
+    assert_equal Array, all_pieces.class
+  end
+
+  def test_05b_all_pieces_contains_32_pieces_to_start
+    controller = Controller.new("Magnus", "DeepBlue")
+    all_pieces = controller.instance_variable_get(:@all_pieces)
+
+    assert_equal 32, all_pieces.size
+    all_pieces.each{|piece| puts "#{piece.class}, #{piece.position}"} 
+  end
+
+  def test_05c_all_pieces_contains_only_game_pieces
+    controller = Controller.new("Magnus", "DeepBlue")
+    all_pieces = controller.instance_variable_get(:@all_pieces)
+
+    assert all_pieces.all?{ | piece | piece.is_a?(GamePiece) }
+  end
+
+  def test_05d_all_pieces_contains_right_number_of_each_piece
+    controller = Controller.new("Magnus", "DeepBlue")
+    all_pieces = controller.instance_variable_get(:@all_pieces)
+
+    num_pawns = all_pieces.count{ |piece| piece.class = Pawn }
+    num_rooks = all_pieces.count{ |piece| piece.class = Rook }
+    num_knights = all_pieces.count{ |piece| piece.class = Knight }
+    num_bishops = all_pieces.count{ |piece| piece.class = Bishop }
+    num_queens = all_pieces.count{ |piece| piece.class = Queen }
+    num_kings = all_pieces.count{ |piece| piece.class = King }
+
+    assert_equal 16, num_pawns
+    assert_equal 4, num_rooks
+    assert_equal 4, num_knighs
+    assert_equal 4, num_bishops
+    assert_equal 2, num_queens
+    assert_equal 2, num_kings
+  end
+
+
 end
+
+
+shit to test when you have time:
+  change_turn removes pieces that are inactive
+  all_positions returns 2d array of all the pieces positions
+  get_move_input
+  clean_coords
+  get_move_type
