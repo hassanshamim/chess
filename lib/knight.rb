@@ -11,8 +11,8 @@ class Knight < GamePiece
     change_vector = [ [2, 1], [2, -1], [1, -2,], [1, 2] ]
 
     change_vector.each do | f, r |
-      coords << [file + f, file + r]
-      coords << [file - f, file - r]
+      coords << [file + f, rank + r]
+      coords << [file - f, rank - r]
     end
 
     coords.select do | file, rank |
