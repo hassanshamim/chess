@@ -1,5 +1,4 @@
-#WHY DON"T I NEED TO REQUIRE ANYTHING???
-['bishop.rb', 'king.rb', 'knight.rb', 'pawn.rb', 'queen.rb', 'rook.rb'].each do |file|
+['board.rb', 'bishop.rb', 'king.rb', 'knight.rb', 'pawn.rb', 'queen.rb', 'rook.rb'].each do |file|
   require "./#{file}"
 end
 class Controller
