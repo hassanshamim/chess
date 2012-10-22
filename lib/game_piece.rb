@@ -3,12 +3,10 @@ class GamePiece
   attr_reader :color
   attr_accessor :rank, :file
 
-  @@all_pieces = Array.new
 
   def initialize ( color, file, rank )
     @color, @rank, @file = color, rank, file
     @alive = true
-   # @@all_pieces << self  #MOVE THIS SOMEWHERE ELSE
   end
 
   def position
