@@ -9,8 +9,10 @@ class Queen < GamePiece
   def path_to( target_coordinate )
     target_file, target_rank = *target_coordinate
     path_array = Array.new
+    file_diff = ( target_file - file).abs
+    rank_diff = (target_rank - rank).abs
 
-    number_of_squares = ( target_file - file).abs
+    number_of_squares = file_diff > rank_diff ? file_diff : rank_diff
     rank_slope = target_rank  <=> rank
     file_slope = target_file <=> file
   
@@ -19,7 +21,7 @@ class Queen < GamePiece
     end
 
     path_array -= [target_coordinate]
-    path_array << [] if path_array.size == 0
+    path_array << [] if path_array.empty?
     path_array
 
   end
