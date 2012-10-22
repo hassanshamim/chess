@@ -49,7 +49,7 @@ class Controller
   def get_move_input
     puts "Enter your desired move"
     input = gets.chomp
-    coords = input.partition('->') - ['->']
+    coords = input.partition('to') - ['to']
     coords.map!(&:strip)
 
     if coords.all?{ | coord | coord.match( /[a-h][1-8]/ ) }
