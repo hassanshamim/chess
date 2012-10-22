@@ -36,7 +36,7 @@ class Bishop < GamePiece
     end
 
     path_array -= [target_coordinate]
-    path_array << [] if path_array.size == 0
+    path_array << [] if path_array.empty?
     path_array
   end
 end

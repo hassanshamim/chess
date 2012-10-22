@@ -123,10 +123,11 @@ class ControllerTest < Test::Unit::TestCase
 
 end
 
-
+=begin
 THINGS to test when you have time:
   change_turn removes pieces that are inactive
   all_positions returns 2d array of all the pieces positions
   get_move_input
   clean_coords
   get_move_type
+=end
