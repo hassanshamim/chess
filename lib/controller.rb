@@ -50,7 +50,7 @@ class Controller
     puts "Enter your desired move"
     input = gets.chomp
     coords = input.partition('to') - ['to']
-    coords.map!(&:strip)
+    coords.map!{ | input | input.downcase.strip }
 
     if coords.all?{ | coord | coord.match( /[a-h][1-8]/ ) }
       coords = clean_coords(*coords)
