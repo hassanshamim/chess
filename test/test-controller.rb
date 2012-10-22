@@ -20,8 +20,9 @@ class ControllerTest < Test::Unit::TestCase
 
   def test_02a_turn_color_is_a_symbol
     controller = Controller.new("Magnus", "DeepBlue")
-    color1 = controller.turn_color
-    color2 = controller.change_turn.turn_color
+    color1 = controller.instance_variable_get(:@turn_color)
+    controller.change_turn
+    color2 = controller.instance_variable_get(:@turn_color)
 
     assert_equal Symbol, color1.class
     assert_equal Symbol, color2.class
@@ -30,15 +31,15 @@ class ControllerTest < Test::Unit::TestCase
   def test_02b_turn_color_starts_as_white
     controller = Controller.new("Magnus", "DeepBlue")
 
-    assert_equal :white, controller.turn_color
+    assert_equal :white, controller.instance_variable_get(:@turn_color)
   end
 
   def test_02c_turn_color_cycles_between_black_and_white
     controller = Controller.new("Magnus", "DeepBlue")
     controller.change_turn
-    turn2 = controller.turn_color
+    turn2 = controller.instance_variable_get(:@turn_color)
     controller.change_turn
-    turn3 = controller.turn_color
+    turn3 = controller.instance_variable_get(:@turn_color)
 
     assert_equal :black, turn2
     assert_equal :white, turn3
@@ -91,7 +92,6 @@ class ControllerTest < Test::Unit::TestCase
     all_pieces = controller.instance_variable_get(:@all_pieces)
 
     assert_equal 32, all_pieces.size
-    all_pieces.each{|piece| puts "#{piece.class}, #{piece.position}"} 
   end
 
   def test_05c_all_pieces_contains_only_game_pieces
@@ -105,16 +105,16 @@ class ControllerTest < Test::Unit::TestCase
     controller = Controller.new("Magnus", "DeepBlue")
     all_pieces = controller.instance_variable_get(:@all_pieces)
 
-    num_pawns = all_pieces.count{ |piece| piece.class = Pawn }
-    num_rooks = all_pieces.count{ |piece| piece.class = Rook }
-    num_knights = all_pieces.count{ |piece| piece.class = Knight }
-    num_bishops = all_pieces.count{ |piece| piece.class = Bishop }
-    num_queens = all_pieces.count{ |piece| piece.class = Queen }
-    num_kings = all_pieces.count{ |piece| piece.class = King }
+    num_pawns = all_pieces.count{ |piece| piece.class == Pawn }
+    num_rooks = all_pieces.count{ |piece| piece.class == Rook }
+    num_knights = all_pieces.count{ |piece| piece.class == Knight }
+    num_bishops = all_pieces.count{ |piece| piece.class == Bishop }
+    num_queens = all_pieces.count{ |piece| piece.class == Queen }
+    num_kings = all_pieces.count{ |piece| piece.class == King }
 
     assert_equal 16, num_pawns
     assert_equal 4, num_rooks
-    assert_equal 4, num_knighs
+    assert_equal 4, num_knights
     assert_equal 4, num_bishops
     assert_equal 2, num_queens
     assert_equal 2, num_kings
