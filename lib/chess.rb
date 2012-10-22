@@ -5,4 +5,5 @@ p1 = gets.chomp
 puts "Please enter name for Player 2"
 p2 = gets.chomp
 
-Controller.new(p1, p2)
+game = Controller.new(p1, p2)
+game.play_game

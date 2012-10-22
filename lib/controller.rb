@@ -9,7 +9,8 @@ class Controller
     @player_cycle = [name1, name2].cycle
     @turn_cycle = [:white, :black].cycle
     @all_pieces = starting_positions
-    change_turn unless name1 == 'debug'
+    @turn_color = @turn_cycle.next
+    @player_name = @player_cycle.next
   end
 
   def starting_positions
@@ -26,12 +27,15 @@ class Controller
     white_pawns + black_pawns + rooks + knights + bishops + queens + kings
   end
 
+  def  play_game
+    Board.new( @all_pieces, @player_name ).display
+    get_move_input
+  end
+  
   def change_turn
     @turn_color = @turn_cycle.next
     @player_name = @player_cycle.next
     @all_pieces.select!{ |piece| piece.active? }
-    Board.new(@all_pieces, @player_name).display
-    get_move_input
   end
 
   def all_positions
@@ -84,6 +88,7 @@ class Controller
         move_piece.file = destination[0]
 	move_piece.rank = destination[1]
 	change_turn
+	play_game
       else
         puts "Selected move is invalid - a piece is in the way.  Please try again"
 	get_move_input 
