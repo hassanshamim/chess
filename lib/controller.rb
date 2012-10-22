@@ -31,6 +31,7 @@ class Controller
     @turn_color = @turn_cycle.next
     @player_name = @player_cycle.next
     @all_pieces.select!{ |piece| piece.active? }
+    Board.new(@all_pieces, @player_name).display
     get_move_input
   end
 
