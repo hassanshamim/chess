@@ -1,5 +1,5 @@
 ['board.rb', 'bishop.rb', 'king.rb', 'knight.rb', 'pawn.rb', 'queen.rb', 'rook.rb'].each do |file|
-  require "./#{file}"
+  require_relative "#{file}"
 end
 class Controller
 

@@ -1,4 +1,4 @@
-require './game_piece.rb'
+require_relative 'game_piece.rb'
 
 class Bishop < GamePiece
 
