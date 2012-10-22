@@ -10,7 +10,7 @@ class Controller
     @player_cycle = [name1, name2].cycle
     @turn_cycle = [:white, :black].cycle
     @all_pieces = starting_positions
-    change_turn
+    change_turn unless name1 == 'debug'
   end
 
   def starting_positions
@@ -59,7 +59,7 @@ class Controller
   end
 
   def get_move_type(start, destination)
-    if piece_at( start ).color == @turn_color and piece_at( destination ).color != @turn_color
+    if piece_at( start ).color == @turn_color  # and piece_at( destination ).color != @turn_color  commented out because if piece is empty then it's a nil error.  move this logic somewhere else
       if all_positions.include?( start )
         move_type =  all_positions.include?(destination) ? 'attack' : 'move' 
         attempt_move( start, destination, move_type )
