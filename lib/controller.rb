@@ -43,7 +43,12 @@ class Controller
   end
 
   def piece_at( coord )
-    @all_pieces.detect{ | piece | piece.position == coord }
+   value = @all_pieces.detect{ | piece | piece.position == coord }
+    if value.nil?
+      puts "There's no one there. Try again. (thanks josh)"
+      get_move_input
+    end
+    value
   end
 
   def get_move_input
